@@ -79,12 +79,12 @@ onMounted(() => {
     class="portfolio"
     :class="{ 'motion-off': !motion, 'project-open': activeId }"
   >
-    <a class="quick-contact" href="mailto:dicersamuel@gmail.com">Contact me</a>
     <main
       class="constellation"
       aria-label="Samuel Dičér and selected projects"
       @click.self="dismiss"
     >
+      <a class="quick-contact" href="mailto:dicersamuel@gmail.com">Contact me</a>
       <svg
         class="connections"
         viewBox="0 0 1000 700"
