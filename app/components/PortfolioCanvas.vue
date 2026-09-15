@@ -112,17 +112,8 @@ onMounted(() => {
     :class="{ 'motion-off': !motion, 'project-open': activeId }"
   >
     <header class="topbar">
-      <a
-        href="mailto:dicersamuel@gmail.com"
-        class="monogram"
-        aria-label="Email Samuel"
-        >sd<span>.</span></a
-      >
-      <p class="topbar-note">INDEPENDENT MIND.<br />FRONTEND DEVELOPER.</p>
-      <nav aria-label="Contact and résumé">
-        <a href="/Samuel_Dicer_CV.pdf" download
-          >Résumé <span aria-hidden="true">↗</span></a
-        ><a class="contact-link" href="mailto:dicersamuel@gmail.com"
+      <nav aria-label="Contact">
+        <a class="contact-link" href="mailto:dicersamuel@gmail.com"
           >Let’s talk <span aria-hidden="true">↗</span></a
         >
       </nav>
@@ -134,8 +125,7 @@ onMounted(() => {
       @click.self="dismiss"
     >
       <div class="canvas-note">
-        <span class="tiny-star" aria-hidden="true">✳</span
-        ><span>A FEW THINGS<br />I’VE HELPED BUILD</span>
+        <span>A FEW THINGS<br />I’VE HELPED BUILD</span>
       </div>
       <span class="edition">PORTFOLIO — 2026</span>
 
@@ -192,8 +182,7 @@ onMounted(() => {
               fetchpriority="high"
             />
           </div>
-          <span class="portrait-spark" aria-hidden="true">✳</span
-          ><span class="portrait-label">A HUMAN BEHIND THE CODE</span>
+          <span class="portrait-label">A HUMAN BEHIND THE CODE</span>
         </div>
         <p class="hello">Hello, I’m</p>
         <h1 id="name">Samuel Dičér<span>.</span></h1>
@@ -219,7 +208,9 @@ onMounted(() => {
           :id="`project-${project.id}`"
           :aria-label="`${project.name} — ${project.label}. View technologies and contribution`"
           :aria-expanded="activeId === project.id"
-          :aria-controls="activeId === project.id ? 'project-detail' : undefined"
+          :aria-controls="
+            activeId === project.id ? 'project-detail' : undefined
+          "
           @focus="focusProject(project.id)"
           @blur="scheduleClose"
           @click="select(project.id)"
@@ -228,14 +219,7 @@ onMounted(() => {
             <circle cx="100" cy="100" r="97" />
           </svg>
           <span class="node-index">0{{ index + 1 }}</span
-          ><span class="node-name"
-            >{{ project.name
-            }}<span
-              v-if="project.id === 'stellarex'"
-              class="node-star"
-              aria-hidden="true"
-              >✳</span
-            ></span
+          ><span class="node-name">{{ project.name }}</span
           ><span class="node-label">{{ project.label }}</span
           ><span class="node-arrow" aria-hidden="true">↗</span>
         </button>
@@ -290,31 +274,6 @@ onMounted(() => {
       </Transition>
     </main>
 
-    <footer class="bottom-bar">
-      <span class="location"
-        ><span aria-hidden="true">↗</span> Slovakia
-        <span class="muted">/ available remotely</span></span
-      >
-      <p class="explore-hint">
-        <span aria-hidden="true">◌</span> Hover, focus or tap a circle to
-        explore
-      </p>
-      <div class="footer-actions">
-        <button
-          class="motion-toggle"
-          :aria-pressed="motion"
-          @click="motion = !motion"
-        >
-          Motion {{ motion ? "on" : "off" }}
-          <span aria-hidden="true">{{ motion ? "◉" : "○" }}</span></button
-        ><a
-          href="https://github.com/samueldicer"
-          target="_blank"
-          rel="noopener noreferrer"
-          >GitHub ↗</a
-        >
-      </div>
-    </footer>
     <div
       class="cursor-dot"
       :class="{ visible: pointer.visible, interactive: pointer.interactive }"

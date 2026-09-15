@@ -1263,3 +1263,244 @@ h1 > span {
     max-height: calc(100% - 8px);
   }
 }
+/* Larger typography and project details in the simplified canvas. */
+.topbar {
+  height: 76px;
+}
+.topbar nav {
+  font-size: 15px;
+}
+.constellation {
+  margin-bottom: 20px;
+}
+.canvas-note {
+  font-size: 11px;
+}
+.edition {
+  font-size: 10px;
+}
+.hello {
+  font-size: 24px;
+}
+.identity h1 {
+  font-size: clamp(40px, 4.5vw, 64px);
+}
+.identity-role {
+  font-size: 15px;
+}
+.available {
+  font-size: 12px;
+}
+.portrait-label {
+  font-size: 8px;
+}
+.project-anchor {
+  width: clamp(150px, 21vh, 200px);
+}
+.project-anchor.large {
+  width: clamp(170px, 24vh, 224px);
+}
+.project-anchor.small {
+  width: clamp(135px, 18vh, 172px);
+}
+.node-name {
+  font-size: 32px;
+}
+.node-label {
+  font-size: 12px;
+  max-width: 145px;
+}
+.node-index {
+  font-size: 11px;
+  top: 13%;
+}
+.node-arrow {
+  font-size: 17px;
+  bottom: 10%;
+}
+.detail-card {
+  width: 540px;
+  padding: 30px 34px 24px;
+  border-radius: 26px;
+}
+.detail-top {
+  font-size: 12px;
+}
+.close-detail {
+  width: 38px;
+  height: 38px;
+  font-size: 25px;
+}
+.detail-category {
+  font-size: 14px;
+}
+.detail-content h2 {
+  font-size: 48px;
+}
+.stack {
+  gap: 7px;
+  margin: 22px 0 28px;
+}
+.stack > span {
+  font-size: 13px;
+  padding: 7px 11px;
+}
+.detail-content h3 {
+  font-size: 11px;
+}
+.detail-content li {
+  font-size: 16px;
+  line-height: 1.65;
+  padding-left: 16px;
+}
+.detail-content li::before {
+  top: 11px;
+}
+.detail-content ul {
+  gap: 13px;
+}
+.detail-bottom {
+  font-size: 11px;
+  margin-top: 25px;
+  padding-top: 15px;
+}
+@media (max-width: 760px) {
+  .topbar {
+    height: 64px;
+  }
+  .topbar nav {
+    font-size: 13px;
+  }
+  .constellation {
+    margin-bottom: 14px;
+  }
+  .canvas-note {
+    font-size: 9px;
+  }
+  .edition {
+    font-size: 8px;
+  }
+  .identity h1 {
+    font-size: 38px;
+  }
+  .hello {
+    font-size: 19px;
+  }
+  .identity-role {
+    font-size: 11px;
+  }
+  .available {
+    font-size: 10px;
+  }
+  .portrait-label {
+    font-size: 5px;
+  }
+  .project-anchor,
+  .project-anchor.large,
+  .project-anchor.small {
+    width: 112px;
+  }
+  .node-name {
+    font-size: 23px;
+  }
+  .node-label {
+    font-size: 9px;
+    max-width: 94px;
+  }
+  .node-index {
+    font-size: 8px;
+    top: 10%;
+  }
+  .node-arrow {
+    font-size: 12px;
+    bottom: 8%;
+  }
+  .detail-card {
+    width: 460px;
+    max-width: calc(100% - 24px);
+    padding: 22px;
+    top: 49%;
+  }
+  .detail-top {
+    font-size: 11px;
+  }
+  .detail-category {
+    font-size: 13px;
+  }
+  .detail-content h2 {
+    font-size: 38px;
+  }
+  .stack {
+    margin: 17px 0 22px;
+  }
+  .stack > span {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
+  .detail-content li {
+    font-size: 14px;
+  }
+  .detail-bottom {
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .identity h1 {
+    font-size: 35px;
+  }
+  .identity-role {
+    font-size: 10px;
+  }
+  .project-anchor,
+  .project-anchor.large,
+  .project-anchor.small {
+    width: 100px;
+  }
+  .node-name {
+    font-size: 21px;
+  }
+  .node-label {
+    font-size: 8px;
+  }
+}
+@media (max-height: 540px) and (min-width: 600px) {
+  .topbar {
+    height: 49px;
+  }
+  .constellation {
+    margin-bottom: 10px;
+  }
+  .identity h1 {
+    font-size: 36px;
+  }
+  .hello {
+    font-size: 16px;
+  }
+  .identity-role {
+    font-size: 11px;
+  }
+  .project-anchor,
+  .project-anchor.large,
+  .project-anchor.small {
+    width: 100px;
+  }
+  .node-name {
+    font-size: 23px;
+  }
+  .node-label {
+    font-size: 9px;
+  }
+  .node-index {
+    font-size: 8px;
+    top: 10%;
+  }
+  .node-arrow {
+    font-size: 12px;
+    bottom: 8%;
+  }
+  .detail-card {
+    top: 50%;
+    width: 520px;
+    padding: 20px 26px;
+  }
+}

@@ -25,9 +25,9 @@ The complete static site is generated in `.output/public`. It can be served by a
 ## Editing
 
 - `app/data/projects.ts`: project names, technology stacks, contributions and desktop circle positions.
-- `app/components/PortfolioCanvas.vue`: single-screen layout, project selection, keyboard behavior and motion control.
+- `app/components/PortfolioCanvas.vue`: single-screen layout, project selection, keyboard behavior and system motion preference.
 - `app/assets/css/portfolio.css`: coral, mist, taupe and white palette, dashed connections, portrait crop, transitions and responsive layouts.
-- `public/Samuel_Dicer_CV.pdf`: downloadable original résumé.
+- `public/Samuel_Dicer_CV.pdf`: retained original résumé asset; the download link has been removed from the interface.
 - `public/samuel-portrait.jpg`: user-supplied original photo, cropped to the upper body with CSS.
 - `nuxt.config.ts`: page title and social metadata. Add canonical and social image URLs after selecting a real production domain.
 
@@ -35,7 +35,7 @@ Typography is self-hosted via Fontsource; no external font request or analytics 
 
 ## Accessibility
 
-Project circles are keyboard-accessible buttons with expanded state. Keyboard dismissal restores focus to the originating circle. Motion respects the system preference and can also be disabled with the footer toggle. Touch users open details by tapping. The custom cursor only applies to fine pointers. Project interaction requires JavaScript; the name, portrait, project names, résumé and contact links are server rendered.
+Project circles are keyboard-accessible buttons with expanded state. Keyboard dismissal restores focus to the originating circle. Motion respects the system reduced-motion preference. Touch users open details by tapping. The custom cursor only applies to fine pointers. Project interaction requires JavaScript; the name, portrait, project names and contact link are server rendered.
 
 ## GitHub
 

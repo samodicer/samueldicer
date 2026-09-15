@@ -37,3 +37,7 @@ This supersedes the original scrolling portfolio design. User requested autonomo
 5. Check desktop, mobile and short landscape: scrollWidth/scrollHeight must not exceed the viewport; all five buttons and footer actions must remain visible.
 
 GitHub creation/push remains blocked by the unavailable GitHub login described in verification.md. This redesign changes the local project and preview only.
+
+## Latest simplification
+
+Removed all star decorations, the sd. header logo, header slogan, résumé link and footer. Kept the contact action. Enlarged the name, project labels and detail text; the detail card is now 540px wide on desktop and adapts to mobile. System reduced-motion support remains. Browser checks confirm no page overflow on desktop/mobile and no star, footer or download-link elements. Earlier motion-toggle checks above document the previous iteration.
