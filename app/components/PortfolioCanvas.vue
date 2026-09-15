@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects";
+import { technicalSkills } from "~/data/skills";
 
 const activeId = ref<string | null>(null);
-const pinned = ref(false);
 const activeProject = computed(() =>
   projects.find((project) => project.id === activeId.value),
 );
@@ -11,55 +11,24 @@ const pointer = ref({ x: -100, y: -100, visible: false, interactive: false });
 const cursorStyle = computed(() => ({
   transform: `translate3d(${pointer.value.x}px, ${pointer.value.y}px, 0)`,
 }));
-let closeTimer: ReturnType<typeof setTimeout> | undefined;
 let frame = 0;
-let restoringFocus = false;
-let hoverDismissedUntil = 0;
 
-function cancelClose() {
-  clearTimeout(closeTimer);
-}
-function reveal(id: string, fromFocus = false) {
-  cancelClose();
-  // Closing the overlay can expose a circle under the stationary pointer.
-  // Ignore that synthetic re-entry until the leave transition has finished.
-  if (!fromFocus && Date.now() < hoverDismissedUntil) return;
-  if (pinned.value) return;
-  activeId.value = id;
-}
-function focusProject(id: string) {
-  if (!restoringFocus) reveal(id, true);
-}
-function scheduleClose() {
-  if (pinned.value) return;
-  cancelClose();
-  closeTimer = setTimeout(() => {
-    activeId.value = null;
-  }, 220);
-}
 function select(id: string) {
-  cancelClose();
-  if (activeId.value === id && pinned.value) {
+  if (activeId.value === id) {
     dismiss();
     return;
   }
   activeId.value = id;
-  pinned.value = true;
 }
 function dismiss() {
-  cancelClose();
-  hoverDismissedUntil = Date.now() + 350;
   const originId = activeId.value;
   const restoreFocus = document.activeElement?.closest("#project-detail");
   activeId.value = null;
-  pinned.value = false;
   if (restoreFocus && originId) {
     nextTick(() => {
-      restoringFocus = true;
       document
         .getElementById(`project-${originId}`)
         ?.focus({ preventScroll: true });
-      restoringFocus = false;
     });
   }
 }
@@ -96,7 +65,6 @@ onMounted(() => {
   document.documentElement.addEventListener("pointerleave", leave);
   window.addEventListener("keydown", handleKey);
   onBeforeUnmount(() => {
-    cancelClose();
     cancelAnimationFrame(frame);
     window.removeEventListener("pointermove", move);
     document.documentElement.removeEventListener("pointerleave", leave);
@@ -111,24 +79,12 @@ onMounted(() => {
     class="portfolio"
     :class="{ 'motion-off': !motion, 'project-open': activeId }"
   >
-    <header class="topbar">
-      <nav aria-label="Contact">
-        <a class="contact-link" href="mailto:dicersamuel@gmail.com"
-          >Let’s talk <span aria-hidden="true">↗</span></a
-        >
-      </nav>
-    </header>
-
+    <a class="quick-contact" href="mailto:dicersamuel@gmail.com">Contact me</a>
     <main
       class="constellation"
       aria-label="Samuel Dičér and selected projects"
       @click.self="dismiss"
     >
-      <div class="canvas-note">
-        <span>A FEW THINGS<br />I’VE HELPED BUILD</span>
-      </div>
-      <span class="edition">PORTFOLIO — 2026</span>
-
       <svg
         class="connections"
         viewBox="0 0 1000 700"
@@ -148,6 +104,10 @@ onMounted(() => {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
+        <path
+          :class="{ highlighted: activeId === 'future' }"
+          d="M500 280 Q500 160 500 63"
+        />
         <path
           :class="{ highlighted: activeId === 'eramba' }"
           d="M500 280 Q330 220 180 126"
@@ -175,19 +135,33 @@ onMounted(() => {
           <div class="portrait-outline" aria-hidden="true" />
           <div class="portrait-crop">
             <img
-              src="/samuel-portrait.jpg"
+              src="/samuel-portrait-cropped.jpg"
               alt="Samuel Dičér, photographed in the mountains"
               width="1152"
-              height="2048"
+              height="1199"
               fetchpriority="high"
             />
           </div>
-          <span class="portrait-label">A HUMAN BEHIND THE CODE</span>
         </div>
         <p class="hello">Hello, I’m</p>
-        <h1 id="name">Samuel Dičér<span>.</span></h1>
-        <p class="identity-role">Frontend developer. Detail enthusiast.</p>
+        <h1 id="name">Samuel Dičér</h1>
+        <p class="identity-role">
+          I’m a frontend developer with 3+ years of experience building
+          enterprise applications and public websites. I focus on intuitive,
+          responsive interfaces, reusable components and maintainable
+          architecture, with SEO in mind. Experienced in AI-assisted
+          development.
+        </p>
         <p class="available"><span /> Open to new opportunities</p>
+        <button
+          id="project-skills"
+          class="skills-button"
+          :aria-expanded="activeId === 'skills'"
+          :aria-controls="activeId === 'skills' ? 'project-detail' : undefined"
+          @click="select('skills')"
+        >
+          Skills
+        </button>
       </section>
 
       <div
@@ -200,75 +174,131 @@ onMounted(() => {
           '--y': `${project.y}%`,
           '--delay': `${index * 85 + 200}ms`,
         }"
-        @mouseenter="reveal(project.id)"
-        @mouseleave="scheduleClose"
       >
         <button
           class="project-node"
           :id="`project-${project.id}`"
-          :aria-label="`${project.name} — ${project.label}. View technologies and contribution`"
+          :aria-label="
+            project.id === 'future'
+              ? 'Could be your project — contact me'
+              : `${project.name} — ${project.label}. View technologies and contribution`
+          "
           :aria-expanded="activeId === project.id"
           :aria-controls="
             activeId === project.id ? 'project-detail' : undefined
           "
-          @focus="focusProject(project.id)"
-          @blur="scheduleClose"
           @click="select(project.id)"
         >
           <svg class="node-ring" viewBox="0 0 200 200" aria-hidden="true">
             <circle cx="100" cy="100" r="97" />
           </svg>
-          <span class="node-index">0{{ index + 1 }}</span
-          ><span class="node-name">{{ project.name }}</span
-          ><span class="node-label">{{ project.label }}</span
-          ><span class="node-arrow" aria-hidden="true">↗</span>
+          <span class="node-name">{{ project.name }}</span
+          ><span class="node-label">{{ project.period || project.label }}</span>
         </button>
       </div>
 
       <Transition name="detail">
         <section
-          v-if="activeProject"
+          v-if="activeProject || activeId === 'skills'"
           id="project-detail"
           class="detail-card"
-          :class="activeProject.side"
-          :aria-label="`${activeProject.name} project details`"
-          @mouseenter="cancelClose"
-          @mouseleave="scheduleClose"
-          @focusin="cancelClose"
-          @focusout="scheduleClose"
+          :class="[
+            activeProject?.side,
+            { 'skills-card': activeId === 'skills' },
+          ]"
+          :aria-label="
+            activeId === 'skills'
+              ? 'Technical skills'
+              : `${activeProject?.name} project details`
+          "
         >
           <div class="detail-top">
             <span
-              >{{ activeProject.company }} <span aria-hidden="true">/</span>
-              {{ activeProject.period }}</span
+              >{{
+                activeProject?.id === "future" ? "" : activeProject?.company
+              }}
+              <span v-if="activeProject?.period" aria-hidden="true">/</span>
+              {{ activeProject?.period }}</span
             ><button
               class="close-detail"
-              aria-label="Close project details"
+              :aria-label="
+                activeId === 'skills' ? 'Close skills' : 'Close project details'
+              "
               @click="dismiss"
             >
-              ×
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 4L12 12M12 4L4 12"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
             </button>
           </div>
-          <div :key="activeProject.id" class="detail-content">
+          <div
+            v-if="activeId === 'skills'"
+            class="detail-content skills-content"
+          >
+            <h2>Technical skills</h2>
+            <section
+              v-for="(group, index) in technicalSkills"
+              :key="group.title"
+              class="skill-group modal-accent"
+              :style="{ '--skill-delay': `${index * 65 + 80}ms` }"
+            >
+              <h3>{{ group.title }}</h3>
+              <p class="skills-list">{{ group.items.join(", ") }}</p>
+            </section>
+          </div>
+          <div
+            v-else-if="activeProject?.id === 'future'"
+            class="detail-content future-content"
+          >
+            <h2>Could be your project</h2>
+            <p class="future-description modal-accent">
+              Have a project in mind or a role to fill? Let’s talk about what we
+              can build together.
+            </p>
+            <a class="future-contact" href="mailto:dicersamuel@gmail.com"
+              >Contact me
+            </a>
+          </div>
+          <div
+            v-else-if="activeProject"
+            :key="activeProject.id"
+            class="detail-content"
+          >
             <p class="detail-category">{{ activeProject.label }}</p>
-            <h2>{{ activeProject.name }}<span>↗</span></h2>
-            <div class="stack">
-              <span v-for="tech in activeProject.stack" :key="tech">{{
-                tech
-              }}</span>
-            </div>
+            <h2>{{ activeProject.name }}</h2>
+            <p class="project-stack modal-accent">
+              {{ activeProject.stack.join(", ") }}
+            </p>
             <h3>MY CONTRIBUTION</h3>
             <ul>
-              <li v-for="item in activeProject.work" :key="item">{{ item }}</li>
+              <li
+                v-for="(item, index) in activeProject.work"
+                :key="item"
+                class="modal-accent"
+                :style="{ '--skill-delay': `${index * 65 + 145}ms` }"
+              >
+                {{ item }}
+              </li>
             </ul>
-          </div>
-          <div class="detail-bottom">
-            <span class="detail-dot" />
-            {{
-              pinned
-                ? "Click the circle again to unpin"
-                : "Click the circle to keep this open"
-            }}
+            <a
+              class="future-contact project-website"
+              :href="activeProject.website"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit website (opens in a new tab)"
+              >Visit website</a
+            >
           </div>
         </section>
       </Transition>

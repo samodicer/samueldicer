@@ -1,0 +1,41 @@
+export const technicalSkills = [
+  {
+    title: "Languages",
+    items: ["TypeScript", "JavaScript", "HTML", "CSS/SCSS"],
+  },
+  {
+    title: "Frameworks",
+    items: ["Vue 3 (Composition API)", "Nuxt", "React", "Next.js"],
+  },
+  {
+    title: "UI & Styling",
+    items: ["Tailwind CSS", "PrimeVue", "Vuetify", "Headless UI"],
+  },
+  {
+    title: "Other Tools & Integrations",
+    items: [
+      "Git (Git Flow)",
+      "GitHub",
+      "GitHub Actions",
+      "Docker",
+      "npm",
+      "Vite",
+      "Vitest",
+      "Jest",
+      "Storybook",
+      "Pinia",
+      "Zustand",
+      "REST APIs",
+      "Axios",
+      "Postman",
+      "Storyblok",
+      "i18next",
+      "Google Search Console",
+      "Figma",
+      "Jira",
+      "Linear",
+      "Slack",
+    ],
+  },
+  { title: "AI-assisted development", items: ["Codex", "Claude", "Copilot"] },
+] as const;
