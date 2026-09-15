@@ -1,6 +1,6 @@
 # Samuel Dičér — Portfolio
 
-An animated, responsive frontend developer portfolio built with Nuxt 4, Vue 3 and TypeScript. English content is based on the supplied CV.
+A single-screen frontend developer portfolio built with Nuxt 4, Vue 3 and TypeScript. An upper-body portrait and name sit among five project circles connected by dashed lines. English project contributions are based on the supplied CV.
 
 ## Development
 
@@ -24,19 +24,18 @@ The complete static site is generated in `.output/public`. It can be served by a
 
 ## Editing
 
-- `app/data/profile.ts`: project descriptions, career history, skills and contact details.
-- `app/components/`: hero, work, about and contact sections; editorial copy is kept with each section.
-- `app/assets/css/main.css`: design tokens, responsive layouts and animation styles.
-- `app/composables/useReveal.ts`: progressive scroll reveals with reduced-motion support.
+- `app/data/projects.ts`: project names, technology stacks, contributions and desktop circle positions.
+- `app/components/PortfolioCanvas.vue`: single-screen layout, project selection, keyboard behavior and motion control.
+- `app/assets/css/portfolio.css`: coral, mist, taupe and white palette, dashed connections, portrait crop, transitions and responsive layouts.
 - `public/Samuel_Dicer_CV.pdf`: downloadable original résumé.
-- `public/samuel.jpg`: optimized portrait extracted from that résumé.
+- `public/samuel-portrait.jpg`: user-supplied original photo, cropped to the upper body with CSS.
 - `nuxt.config.ts`: page title and social metadata. Add canonical and social image URLs after selecting a real production domain.
 
-Typography is self-hosted via Fontsource; no external font request or analytics is required. Decorative project previews are original interface illustrations, explicitly labelled as such, not product screenshots. Native disclosure controls expose contribution details without JavaScript. Email links open the visitor’s mail client; no backend or contact form is required.
+Typography is self-hosted via Fontsource; no external font request or analytics is required. Hover or focus a circle to preview its details, click/tap to pin it, and press Escape or the close button to dismiss. The layout stays within the viewport; only an open detail card may scroll internally on a very short screen. Email links open the visitor’s mail client; no backend or contact form is required.
 
 ## Accessibility
 
-Semantic sections, keyboard focus indicators, a skip link, reduced-motion support and visible server-rendered content. Scroll animation is a progressive enhancement. Mobile layouts are designed from 360px upward.
+Project circles are keyboard-accessible buttons with expanded state. Keyboard dismissal restores focus to the originating circle. Motion respects the system preference and can also be disabled with the footer toggle. Touch users open details by tapping. The custom cursor only applies to fine pointers. Project interaction requires JavaScript; the name, portrait, project names, résumé and contact links are server rendered.
 
 ## GitHub
 

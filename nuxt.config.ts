@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2026-09-15",
   devtools: { enabled: false },
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/css/portfolio.css"],
   app: {
     head: {
       htmlAttrs: { lang: "en" },
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
           content:
             "Frontend developer crafting thoughtful digital experiences with Vue, Nuxt, React and TypeScript. Explore the work and experience of Samuel Dičér.",
         },
-        { name: "theme-color", content: "#111210" },
+        { name: "theme-color", content: "#ffffff" },
         { property: "og:title", content: "Samuel Dičér — Frontend Developer" },
         {
           property: "og:description",

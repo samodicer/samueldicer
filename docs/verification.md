@@ -1,5 +1,7 @@
 # Verification — 2026-09-15
 
+The checks below describe the initial scrolling version. See [canvas-redesign.md](canvas-redesign.md) for the current single-screen design and browser regression checks. The GitHub authentication limitation below is unchanged.
+
 ## Passed
 
 - Nuxt type checking (`npm run typecheck`).
