@@ -60,11 +60,16 @@ button:focus:not(:focus-visible) {
   overflow: clip;
   background: #fff;
 }
-.quick-contact {
+.quick-actions {
   position: fixed;
   top: max(24px, env(safe-area-inset-top));
   right: max(28px, env(safe-area-inset-right));
   z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.quick-contact {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,9 +90,11 @@ button:focus:not(:focus-visible) {
   box-shadow: 0 9px 26px #f8706045;
 }
 @media (max-width: 760px) {
-  .quick-contact {
+  .quick-actions {
     top: max(12px, env(safe-area-inset-top));
     right: max(12px, env(safe-area-inset-right));
+  }
+  .quick-contact {
     min-height: 44px;
     padding: 10px 18px;
     font-size: 13px;
@@ -1767,7 +1774,7 @@ h1 > span {
 }
 .skills-button:hover,
 .skills-button[aria-expanded="true"] {
-  background: #f8706018;
+  background: #fef2f0;
   border-color: var(--coral);
   transform: translateY(-2px);
 }
@@ -1849,5 +1856,18 @@ h1 > span {
   }
   .skills-content h2 {
     font-size: 34px;
+  }
+}
+.quick-actions .download-cv {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+@media (max-width: 760px) {
+  .project-anchor.eramba-web {
+    top: max(18%, 170px);
   }
 }

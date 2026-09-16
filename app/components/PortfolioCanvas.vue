@@ -84,7 +84,17 @@ onMounted(() => {
       aria-label="Samuel Dičér and selected projects"
       @click.self="dismiss"
     >
-      <a class="quick-contact" href="mailto:dicersamuel@gmail.com">Contact me</a>
+      <div class="quick-actions">
+        <a class="quick-contact" href="mailto:dicersamuel@gmail.com"
+          >Contact me</a
+        >
+        <a
+          class="skills-button download-cv"
+          href="/Samuel_Dicer_CV.pdf"
+          download="Samuel_Dicer_CV.pdf"
+          >Download CV</a
+        >
+      </div>
       <svg
         class="connections"
         viewBox="0 0 1000 700"
