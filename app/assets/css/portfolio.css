@@ -1805,7 +1805,8 @@ h1 > span {
     border-color 0.25s,
     background 0.25s;
 }
-.modal-accent:hover {
+.modal-accent:hover,
+.detail-content li.modal-accent:hover {
   border-color: var(--coral);
   background: #f8706008;
 }

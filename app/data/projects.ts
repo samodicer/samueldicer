@@ -19,7 +19,7 @@ export const projects = [
     name: "eramba",
     label: "GRC platform",
     company: "DeMi Studio",
-    period: "Oct 2024 — Present",
+    period: "Oct 2024 — Nov 2026",
     stack: ["Vue 3", "TypeScript", "Pinia", "PrimeVue", "Tailwind CSS", "Vite"],
     work: [
       "Built reusable UI components, including backend-driven forms and data tables.",
@@ -37,7 +37,7 @@ export const projects = [
     name: "eramba website",
     label: "Website & learning portal",
     company: "DeMi Studio",
-    period: "Oct 2024 — Present",
+    period: "Oct 2024 — Nov 2026",
     stack: [
       "React",
       "Next.js",
