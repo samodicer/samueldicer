@@ -421,12 +421,8 @@ h1 > span {
   font-weight: 750;
   letter-spacing: -1.5px;
 }
-.stellarex .node-name {
-  font-family: Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.8px;
-}
-.eramba-web .project-node {
+.eramba-web .project-node,
+.stellarex .project-node {
   background: #cdd7d62e;
 }
 .juno-web .project-node {
@@ -1651,12 +1647,14 @@ h1 > span {
   text-align: center;
 }
 .eramba-web .node-name,
+.stellarex .node-name,
 .juno-web .node-name {
   font-size: 27px;
   line-height: 1.15;
 }
 @media (max-width: 760px) {
   .eramba-web .node-name,
+  .stellarex .node-name,
   .juno-web .node-name {
     font-size: 21px;
   }
@@ -1666,6 +1664,7 @@ h1 > span {
 }
 @media (max-width: 380px), (max-height: 540px) {
   .eramba-web .node-name,
+  .stellarex .node-name,
   .juno-web .node-name {
     font-size: 19px;
   }
@@ -1870,5 +1869,15 @@ h1 > span {
 @media (max-width: 760px) {
   .project-anchor.eramba-web {
     top: max(18%, 170px);
+  }
+}
+@media (max-width: 760px) {
+  .project-anchor.digifox {
+    left: 34%;
+    top: 91%;
+  }
+  .project-anchor.juno-web {
+    left: 66%;
+    top: 91%;
   }
 }

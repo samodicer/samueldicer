@@ -22,7 +22,8 @@ export const projects = [
     period: "Oct 2024 — Nov 2026",
     stack: ["Vue 3", "TypeScript", "Pinia", "PrimeVue", "Tailwind CSS", "Vite"],
     work: [
-      "Built reusable UI components, including backend-driven forms and data tables.",
+      "Built reusable UI components, including backend-driven forms.",
+      "Optimized data tables for large datasets.",
       "Integrated REST APIs and wrote frontend unit tests.",
       "Maintained the frontend repository, reviewed code and prepared releases.",
     ],
@@ -111,6 +112,22 @@ export const projects = [
     x: 18,
     y: 76,
     size: "medium",
+    side: "left",
+  },
+  {
+    id: "digifox",
+    website: "",
+    name: "DIGIFOX",
+    label: "Android Developer",
+    company: "DIGIFOX",
+    period: "Aug 2021 — May 2022",
+    stack: ["Java", "Kotlin", "Android Studio"],
+    work: [
+      "Implemented new features and maintained existing code for the Uni Compare and Mahzooz apps.",
+    ],
+    x: 38,
+    y: 87,
+    size: "small",
     side: "left",
   },
 ] as const;

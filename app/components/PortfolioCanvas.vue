@@ -136,7 +136,11 @@ onMounted(() => {
         />
         <path
           :class="{ highlighted: activeId === 'juno-web' }"
-          d="M500 280 Q500 490 510 616"
+          d="M500 280 Q650 490 660 637"
+        />
+        <path
+          :class="{ highlighted: activeId === 'digifox' }"
+          d="M500 280 Q350 490 340 637"
         />
       </svg>
 
@@ -156,11 +160,11 @@ onMounted(() => {
         <p class="hello">Hello, I’m</p>
         <h1 id="name">Samuel Dičér</h1>
         <p class="identity-role">
-          I’m a frontend developer with 3+ years of experience building
-          enterprise applications and public websites. I focus on intuitive,
-          responsive interfaces, reusable components and maintainable
-          architecture, with SEO in mind. Experienced in AI-assisted
-          development.
+          I’m a frontend developer with 4+ years of software development
+          experience, specializing in enterprise applications and public
+          websites. I focus on intuitive, responsive interfaces, reusable
+          components and maintainable architecture, with SEO in mind.
+          Experienced in AI-assisted development.
         </p>
         <p class="available"><span /> Open to new opportunities</p>
         <button
@@ -302,6 +306,7 @@ onMounted(() => {
               </li>
             </ul>
             <a
+              v-if="activeProject.website"
               class="future-contact project-website"
               :href="activeProject.website"
               target="_blank"

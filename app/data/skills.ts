@@ -1,7 +1,7 @@
 export const technicalSkills = [
   {
     title: "Languages",
-    items: ["TypeScript", "JavaScript", "HTML", "CSS/SCSS"],
+    items: ["TypeScript", "JavaScript", "HTML", "CSS/SCSS", "Java", "Kotlin"],
   },
   {
     title: "Frameworks",
@@ -34,7 +34,9 @@ export const technicalSkills = [
       "Figma",
       "Jira",
       "Linear",
+      "Bitbucket",
       "Slack",
+      "Android Studio",
     ],
   },
   { title: "AI-assisted development", items: ["Codex", "Claude", "Copilot"] },
